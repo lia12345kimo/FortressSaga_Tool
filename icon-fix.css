@@ -60,3 +60,13 @@
 }
 
 .part-card .icon-mark { font-size: 24px; }
+
+/* 新版素材已依每張圖片自己的黃框裁切，不再使用舊截圖位移。 */
+.icon img,
+.cell .icon img {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: contain;
+}

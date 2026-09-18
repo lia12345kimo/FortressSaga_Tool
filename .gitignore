@@ -1,4 +1,5 @@
 audit/
+tools/
 *.zip
 .DS_Store
 Thumbs.db
