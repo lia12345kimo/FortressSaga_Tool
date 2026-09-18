@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 
-const RELEASE = '20260918-11';
+const RELEASE = '20260918-12';
 const read = name => fs.readFileSync(path.join(__dirname, name), 'utf8');
 
 // WebP 的長寬藏在 VP8X 區塊：第 24~26 位元組是寬度減一，27~29 是高度減一，
@@ -57,7 +57,7 @@ test('browser scripts use a cache-busting release version', () => {
   for (const asset of ['connectivity.js', 'effect-engine.js', 'mobile-ui.js', 'optimizer.js', 'app.js']) {
     assert.ok(html.includes(asset + '?v=' + RELEASE), `${asset} must be cache-busted`);
   }
-  assert.ok(!html.includes('?v=20260918-10'), '不可殘留舊版本號');
+  assert.ok(!html.includes('?v=20260918-11'), '不可殘留舊版本號');
 });
 
 test('mobile picker rows keep their own height inside the flex column', () => {
