@@ -24,7 +24,8 @@ test('app does not add replacement arrows or neon icon styles', () => {
 
 test('browser scripts use a cache-busting release version', () => {
   const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
-  assert.match(html, /connectivity\.js\?v=20260918-4/);
-  assert.match(html, /effect-engine\.js\?v=20260918-4/);
-  assert.match(html, /app\.js\?v=20260918-4/);
+  assert.match(html, /connectivity\.js\?v=20260918-5/);
+  assert.match(html, /effect-engine\.js\?v=20260918-5/);
+  assert.match(html, /mobile-ui\.js\?v=20260918-5/);
+  assert.match(html, /app\.js\?v=20260918-5/);
 });

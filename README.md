@@ -14,6 +14,7 @@
 - JSON 配置匯入與匯出
 - 離線執行，不需安裝
 - 36張ICON為128×128透明正方形，只保留原始物件，不疊加黃框、箭頭或濾鏡
+- 手機版底部零件側欄：點空格選零件、分類篩選、已用零件變灰、長按拖曳交換
 
 ## 使用方式
 
@@ -22,7 +23,7 @@
 ## 測試
 
 ```bash
-node --test connectivity.test.js effect-engine.test.js
+node --test connectivity.test.js effect-engine.test.js icon-assets.test.js mobile-ui.test.js
 ```
 
 ## 聲明
