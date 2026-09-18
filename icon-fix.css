@@ -1,0 +1,62 @@
+.icon img,
+.cell .icon img {
+  width: 300%;
+  max-width: none;
+  left: -100%;
+  top: -64%;
+}
+
+.strict-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 9px;
+  border: 1px solid #4b505c;
+  border-radius: 9px;
+  color: #f5efe1 !important;
+  background: #20242c;
+}
+
+.strict-toggle input { accent-color: #f2b84b; }
+.group-state { display:block; margin-top:3px; font-size:12px; }
+.group-state.ok { color:#95e3aa; }
+.group-state.bad { color:#ff9696; }
+
+.icon-neon {
+  background: radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--cat) 22%, #10141b), #080a0e 72%);
+  border-color: var(--cat);
+  box-shadow: inset 0 0 12px color-mix(in srgb, var(--cat) 34%, transparent), 0 0 8px color-mix(in srgb, var(--cat) 45%, transparent);
+}
+
+.icon-neon::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  z-index: 1;
+  border: 1px solid color-mix(in srgb, var(--cat) 62%, white);
+  border-radius: 7px;
+  opacity: .7;
+  pointer-events: none;
+}
+
+.icon-neon img {
+  filter: grayscale(1) contrast(1.9) brightness(.82) sepia(1) saturate(4.2);
+  mix-blend-mode: screen;
+  opacity: .88;
+}
+
+.icon-mark {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: clamp(20px, 4vw, 44px);
+  line-height: 1;
+  font-weight: 900;
+  text-shadow: 0 0 4px #000, 0 0 11px var(--cat), 0 0 18px var(--cat);
+  pointer-events: none;
+}
+
+.part-card .icon-mark { font-size: 24px; }
