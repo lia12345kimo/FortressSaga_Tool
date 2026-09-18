@@ -85,3 +85,13 @@ test('two copies of the same amplifier keep independent quality ranges', () => {
   assert.deepEqual(amplifierTargets(grid, 10, byId), [11, 12]);
   assert.deepEqual(amplifierTargets(grid, 20, byId), [21]);
 });
+
+test('stage value interpolates between the 0-stage and full-stage numbers', () => {
+  const { stageValue } = require('./effect-engine.js');
+  assert.equal(stageValue(30, 45, 0, 7), 30);
+  assert.equal(stageValue(30, 45, 7, 7), 45);
+  assert.equal(stageValue(30, 45, 5, 7), 40.7);
+  assert.equal(stageValue(60, 85, 3, 3), 85, '最大階數較低時滿階仍是滿值');
+  assert.equal(stageValue(7.5, 10, 9, 7), 10, '超過上限要夾住');
+  assert.equal(stageValue(7.5, 10, -2, 7), 7.5, '低於 0 階要夾住');
+});

@@ -7,6 +7,15 @@
     return Math.round(maximum * multiplier * 10) / 10;
   }
 
+  // 截圖上的「+30.0~45.0%」＝0 階值到滿階值，階數在兩端之間等距內插。
+  function stageValue(minimum, maximum, level, maxLevel) {
+    const lo = Number(minimum), hi = Number(maximum);
+    if (!Number.isFinite(lo) || !Number.isFinite(hi)) return Number.isFinite(hi) ? hi : 0;
+    if (!Number.isFinite(maxLevel) || maxLevel <= 0) return hi;
+    const step = Math.max(0, Math.min(maxLevel, Number(level) || 0)) / maxLevel;
+    return Math.round((lo + (hi - lo) * step) * 10) / 10;
+  }
+
   function amplifierTargets(grid, index, byId) {
     const amplifier = byId[grid[index]?.id];
     if (!amplifier?.amp) return [];
@@ -44,5 +53,5 @@
     });
   }
 
-  return { finalMaximum, amplifierTargets, allAmplifiersUseful };
+  return { finalMaximum, stageValue, amplifierTargets, allAmplifiersUseful };
 });

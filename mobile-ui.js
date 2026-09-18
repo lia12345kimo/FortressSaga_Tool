@@ -40,5 +40,17 @@
     return { ok: true, grid: next };
   }
 
-  return { placePart, movePart };
+  function cellTapAction(grid, index) {
+    if (index < 0 || index >= grid.length) return "none";
+    return grid[index] ? "editor" : "picker";
+  }
+
+  function clampLevel(level, rarity) {
+    const max = Number.isFinite(rarity) ? rarity : 0;
+    const wanted = Math.round(Number(level));
+    if (!Number.isFinite(wanted)) return 0;
+    return Math.max(0, Math.min(max, wanted));
+  }
+
+  return { placePart, movePart, cellTapAction, clampLevel };
 });

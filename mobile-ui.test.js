@@ -61,3 +61,20 @@ test("moving requires a placed source and a valid board destination", () => {
   assert.equal(MobileUI.movePart(grid, 3, 4).reason, "empty-source");
   assert.equal(MobileUI.movePart(grid, 4, 25).reason, "invalid-target");
 });
+
+test("tapping a cell opens the picker when empty and the settings sheet when filled", () => {
+  const grid = Array(25).fill(null);
+  grid[7] = cell("attack");
+
+  assert.equal(MobileUI.cellTapAction(grid, 7), "editor");
+  assert.equal(MobileUI.cellTapAction(grid, 8), "picker");
+  assert.equal(MobileUI.cellTapAction(grid, 25), "none");
+});
+
+test("level stepper stays inside 0 and the cell rarity", () => {
+  assert.equal(MobileUI.clampLevel(8, 7), 7);
+  assert.equal(MobileUI.clampLevel(-1, 7), 0);
+  assert.equal(MobileUI.clampLevel(4, 3), 3);
+  assert.equal(MobileUI.clampLevel("", 7), 0);
+  assert.equal(MobileUI.clampLevel(2, 7), 2);
+});
