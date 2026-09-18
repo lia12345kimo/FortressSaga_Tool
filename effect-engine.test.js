@@ -72,3 +72,16 @@ test('horizontal, vertical, cross and all-around only return occupied in-board c
     assert.deepEqual(amplifierTargets(grid, 12, byId), expected);
   }
 });
+
+test('two copies of the same amplifier keep independent quality ranges', () => {
+  const grid = Array(25).fill(null);
+  grid[10] = { id: 'right', variant: 'yellow' };
+  grid[20] = { id: 'right', variant: 'blue' };
+  grid[11] = { id: 'attack' };
+  grid[12] = { id: 'attack' };
+  grid[21] = { id: 'attack' };
+  grid[22] = { id: 'attack' };
+
+  assert.deepEqual(amplifierTargets(grid, 10, byId), [11, 12]);
+  assert.deepEqual(amplifierTargets(grid, 20, byId), [21]);
+});
