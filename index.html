@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>洛伊｜機械工程配置編輯器</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='14' width='64' height='64' fill='%2313161c'/%3E%3Cpath d='M14 18h36v28H14z' fill='none' stroke='%23f2b84b' stroke-width='5'/%3E%3Cpath d='M26 18v28M38 18v28M14 30h36' stroke='%23f2b84b' stroke-width='3'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="icon-fix.css">
+  <link rel="stylesheet" href="styles.css?v=20260918-3">
+  <link rel="stylesheet" href="icon-fix.css?v=20260918-3">
 </head>
 <body>
   <header><div><h1>機械工程配置編輯器</h1><p>拖曳配置・增幅範圍・連接加乘・一鍵優化</p></div><div class="actions"><button id="saveBtn">匯出配置</button><label class="button">匯入配置<input id="importFile" type="file" accept=".json"></label><button id="resetBtn" class="danger">重設</button></div></header>
@@ -20,7 +20,7 @@
     <aside class="editor panel"><h2>格子設定</h2><div id="editor"><p class="muted">點選格子查看與修改。</p></div></aside>
   </main>
   <section class="details panel"><div class="details-head"><h2>最大能力明細</h2><span>截圖區間最大值 × 同類連接倍率</span></div><div class="table-wrap"><table><thead><tr><th>位置</th><th>零件</th><th>類型</th><th>自身</th><th>增幅後</th><th>增幅來源</th><th>連接</th><th>倍率</th><th>區間最大值</th><th>最終最大值</th></tr></thead><tbody id="calcBody"></tbody></table></div></section>
-  <script src="connectivity.js"></script>
-  <script src="effect-engine.js"></script>
-  <script src="app.js"></script>
+  <script src="connectivity.js?v=20260918-3"></script>
+  <script src="effect-engine.js?v=20260918-3"></script>
+  <script src="app.js?v=20260918-3"></script>
 </body></html>

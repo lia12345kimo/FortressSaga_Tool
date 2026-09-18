@@ -21,3 +21,10 @@ test('app does not add replacement arrows or neon icon styles', () => {
   assert.doesNotMatch(app, /icon-mark|AMP_MARK|iconStyle/);
   assert.doesNotMatch(html, /ICON風格|iconStyle/);
 });
+
+test('browser scripts use a cache-busting release version', () => {
+  const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+  assert.match(html, /connectivity\.js\?v=\d+/);
+  assert.match(html, /effect-engine\.js\?v=\d+/);
+  assert.match(html, /app\.js\?v=\d+/);
+});
