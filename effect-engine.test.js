@@ -95,3 +95,11 @@ test('stage value interpolates between the 0-stage and full-stage numbers', () =
   assert.equal(stageValue(7.5, 10, 9, 7), 10, '超過上限要夾住');
   assert.equal(stageValue(7.5, 10, -2, 7), 7.5, '低於 0 階要夾住');
 });
+
+test('stage totals report what the cap throws away', () => {
+  const { stageTotals } = require('./effect-engine.js');
+  assert.deepEqual(stageTotals(0, 5, 7), { level: 5, waste: 0, ownCeiling: 2 });
+  assert.deepEqual(stageTotals(3, 5, 7), { level: 7, waste: 1, ownCeiling: 2 }, '自身 3 已經超過門檻 2，多的 1 階被丟掉');
+  assert.deepEqual(stageTotals(0, 5, 3), { level: 3, waste: 2, ownCeiling: 0 }, '增幅器就灌滿了，自身強化完全沒用');
+  assert.deepEqual(stageTotals(2, 0, 7), { level: 2, waste: 0, ownCeiling: 7 }, '沒有增幅器時自身強化完全有效');
+});

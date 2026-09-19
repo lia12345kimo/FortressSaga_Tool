@@ -21,6 +21,7 @@
 .group-state { display:block; margin-top:3px; font-size:12px; }
 .group-state.ok { color:#95e3aa; }
 .group-state.bad { color:#ff9696; }
+.level.capped { color:#ffb347; border-color:#ffb34788; }
 
 /* 新版素材是256×256透明PNG，只顯示原始物件。 */
 .icon {
@@ -51,9 +52,6 @@
 .editor-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
 .editor-head button { flex: 0 0 auto; width: auto; margin-top: 0; }
 .editor-head h2 { white-space: nowrap; }
-.stepper { display: flex; gap: 6px; margin-top: 4px; }
-.stepper input { min-width: 0; text-align: center; }
-.editor .stepper button { flex: 0 0 48px; width: 48px; min-height: 46px; margin-top: 0; font-size: 18px; font-weight: 800; }
 
 @media (max-width: 720px), (pointer: coarse) {
   body { padding-bottom: 18px; }

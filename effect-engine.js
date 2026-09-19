@@ -16,6 +16,14 @@
     return Math.round((lo + (hi - lo) * step) * 10) / 10;
   }
 
+  // 階數會被最大階數卡住：超過的部分是白給的，自身強化在門檻以上也不再有效果。
+  function stageTotals(ownLevel, incoming, maxLevel) {
+    const own = Math.max(0, Number(ownLevel) || 0);
+    const inc = Math.max(0, Number(incoming) || 0);
+    const cap = Math.max(0, Number(maxLevel) || 0);
+    return { level: Math.min(cap, own + inc), waste: Math.max(0, own + inc - cap), ownCeiling: Math.max(0, cap - inc) };
+  }
+
   function amplifierTargets(grid, index, byId) {
     const amplifier = byId[grid[index]?.id];
     if (!amplifier?.amp) return [];
@@ -53,5 +61,5 @@
     });
   }
 
-  return { finalMaximum, stageValue, amplifierTargets, allAmplifiersUseful };
+  return { finalMaximum, stageValue, stageTotals, amplifierTargets, allAmplifiersUseful };
 });

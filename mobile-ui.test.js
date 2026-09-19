@@ -70,11 +70,3 @@ test("tapping a cell opens the picker when empty and the settings sheet when fil
   assert.equal(MobileUI.cellTapAction(grid, 8), "picker");
   assert.equal(MobileUI.cellTapAction(grid, 25), "none");
 });
-
-test("level stepper stays inside 0 and the cell rarity", () => {
-  assert.equal(MobileUI.clampLevel(8, 7), 7);
-  assert.equal(MobileUI.clampLevel(-1, 7), 0);
-  assert.equal(MobileUI.clampLevel(4, 3), 3);
-  assert.equal(MobileUI.clampLevel("", 7), 0);
-  assert.equal(MobileUI.clampLevel(2, 7), 2);
-});

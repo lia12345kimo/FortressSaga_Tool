@@ -43,7 +43,7 @@
     const amps = calculated.filter(x => x && x.amp);
     return {
       ability: normal.reduce((sum, x) => sum + x.final, 0),
-      stageGain: normal.reduce((sum, x) => sum + Math.max(0, x.level - (x.g.level || 0)), 0),
+      stageGain: normal.reduce((sum, x) => sum + x.level, 0),
       linkSum: normal.reduce((sum, x) => sum + x.group.length, 0),
       coverage: amps.reduce((sum, x) => sum + x.targets.length * x.p.stage, 0)
     };

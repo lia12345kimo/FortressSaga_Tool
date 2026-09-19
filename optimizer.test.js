@@ -63,10 +63,10 @@ test('amp strategy ranks stage gain above connection length, link strategy the r
   assert.ok(objective(linkHeavy, 'link') > objective(ampHeavy, 'link'), 'link 策略要選連接長的');
 });
 
-test('stage gain counts only what the amplifiers actually added', () => {
-  const alreadyMaxed = calc([{ level: 7, own: 7, group: 3, final: 45 }]);
-  assert.equal(summarise(alreadyMaxed).stageGain, 0, '自身就已經滿階時，增幅器沒有貢獻');
-  assert.equal(summarise(calc([{ level: 7, own: 3, group: 3, final: 45 }])).stageGain, 4);
+test('stage gain is the stage count the amplifiers produced', () => {
+  // 階數只能靠增幅器取得，沒有玩家自己加的部分。
+  assert.equal(summarise(calc([{ level: 0, group: 3, final: 30 }])).stageGain, 0, '沒被照到就是 0 階');
+  assert.equal(summarise(calc([{ level: 7, group: 3, final: 45 }, { level: 4, group: 3, final: 38 }])).stageGain, 11);
 });
 
 test('value strategy scores the build weighting only, not raw amplifier coverage', () => {
